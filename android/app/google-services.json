@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "29216736759",
+    "project_id": "bookfinder-8717e",
+    "storage_bucket": "bookfinder-8717e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29216736759:android:a8aacba862b55f66881af2",
+        "android_client_info": {
+          "package_name": "com.example.bookfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "29216736759-iv8fvhdb56ncg3ikrqc79m5bu26b38e7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsUBOYejViApFIIWS640hsAJNdRs-WsOQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "29216736759-iv8fvhdb56ncg3ikrqc79m5bu26b38e7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
