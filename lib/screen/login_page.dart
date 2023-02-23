@@ -1,3 +1,4 @@
+import 'package:bookfinder/screen/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../components/textfield.dart';
@@ -8,14 +9,13 @@ class Login extends StatelessWidget {
 
   final emailidcont = TextEditingController();
   final password = TextEditingController();
-
   void signin() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailidcont.text.trim(), password: password.text.trim());
   }
 
   void forgotpass() {}
-  void newuser() {}
+  void newuser(context) {}
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +124,12 @@ class Login extends StatelessWidget {
                   height: 50.0,
                 ),
                 GestureDetector(
-                    onTap: newuser,
+                    onTap: () => {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Signupauthpage()))
+                        },
                     child: RichText(
                       text: const TextSpan(
                           text: "New User ?",

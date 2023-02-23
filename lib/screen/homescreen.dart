@@ -17,6 +17,12 @@ class Homesrc extends StatelessWidget {
           ],
         ),
         drawer: const Mydrawer(),
+        body: const Center(
+          child: Text(
+            "Hello",
+            style: TextStyle(fontSize: 50),
+          ),
+        ),
       ),
     );
   }
