@@ -1,3 +1,4 @@
+import 'package:bookfinder/screen/forgetpass.dart';
 import 'package:bookfinder/screen/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +15,6 @@ class Login extends StatelessWidget {
         email: emailidcont.text.trim(), password: password.text.trim());
   }
 
-  void forgotpass() {}
-  void newuser(context) {}
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,20 +30,10 @@ class Login extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                Container(
-                  // color: Colors.grey[300],
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFc05e6e),
-                    borderRadius: BorderRadius.circular(80.0),
-                  ),
-                  height: 150,
-                  width: 150,
-                  child: Center(
-                    child: Image.asset(
-                      'images/imgban.png',
-                      height: 100,
-                    ),
-                  ),
+                const Icon(
+                  Icons.book_outlined,
+                  size: 100,
+                  color: Color(0xff1e1e1e),
                 ),
                 const SizedBox(
                   height: 25,
@@ -85,14 +73,19 @@ class Login extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       GestureDetector(
-                        onTap: forgotpass,
+                        onTap: () => {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Forgotpass()))
+                        },
                         child: const Text(
                           "Forgot Password?",
                           textAlign: TextAlign.end,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w900,
-                            color: Color(0xff000000),
+                            color: Color(0xff3584e4),
                           ),
                         ),
                       ),
@@ -107,7 +100,7 @@ class Login extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.fromLTRB(50.0, 16.0, 50.0, 16.0),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFc05e6e),
+                      color: const Color(0xff3584e4),
                       borderRadius: BorderRadius.circular(4.0),
                     ),
                     child: const Text(
@@ -144,7 +137,7 @@ class Login extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w900,
-                                  color: Color(0xFFc05e6e),
+                                  color: Color(0xff3584e4),
                                 ))
                           ]),
                     )),

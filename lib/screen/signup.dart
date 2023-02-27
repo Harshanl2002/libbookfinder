@@ -30,6 +30,8 @@ class Signup extends StatelessWidget {
   final emailidcont = TextEditingController();
   final password = TextEditingController();
   final passwordcon = TextEditingController();
+  final age_con = TextEditingController();
+  final name_con = TextEditingController();
 
   void signup() async {
     if (password.text.trim() == passwordcon.text.trim()) {
@@ -60,6 +62,18 @@ class Signup extends StatelessWidget {
               ),
               const SizedBox(
                 height: 25,
+              ),
+              Loginfield(
+                  controler: name_con,
+                  hintText: "Full Name",
+                  obsecureText: false),
+              const SizedBox(
+                height: 10,
+              ),
+              Loginfield(
+                  controler: age_con, hintText: "Age", obsecureText: false),
+              const SizedBox(
+                height: 10,
               ),
               Loginfield(
                   controler: emailidcont,
