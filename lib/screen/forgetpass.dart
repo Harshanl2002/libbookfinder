@@ -1,4 +1,7 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:bookfinder/components/textfield.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Forgotpass extends StatefulWidget {
@@ -10,6 +13,24 @@ class Forgotpass extends StatefulWidget {
 
 class _ForgotpassState extends State<Forgotpass> {
   var email_Cont = TextEditingController();
+
+  Future Passch() async {
+    String str = email_Cont.text;
+    try {
+      FirebaseAuth.instance
+          .sendPasswordResetEmail(email: email_Cont.text.trim());
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text("Email sent to " + str),
+            );
+          });
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +51,7 @@ class _ForgotpassState extends State<Forgotpass> {
               height: 25.0,
             ),
             GestureDetector(
-              onTap: () => {},
+              onTap: Passch,
               child: Container(
                 padding: const EdgeInsets.fromLTRB(50.0, 16.0, 50.0, 16.0),
                 decoration: BoxDecoration(

@@ -1,7 +1,7 @@
-// ignore_for_file: avoid_print
-
 import 'package:bookfinder/components/textfield.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'homescreen.dart';
 
@@ -17,7 +17,7 @@ class Signupauthpage extends StatelessWidget {
           if (snapshot.hasData) {
             return const Homesrc();
           } else {
-            return Signup();
+            return const Signup();
           }
         },
       ),
@@ -25,23 +25,46 @@ class Signupauthpage extends StatelessWidget {
   }
 }
 
-class Signup extends StatelessWidget {
-  Signup({super.key});
+class Signup extends StatefulWidget {
+  const Signup({super.key});
+
+  @override
+  State<Signup> createState() => _SignupState();
+}
+
+class _SignupState extends State<Signup> {
   final emailidcont = TextEditingController();
   final password = TextEditingController();
   final passwordcon = TextEditingController();
-  final age_con = TextEditingController();
-  final name_con = TextEditingController();
+  final agecon = TextEditingController();
+  final namecon = TextEditingController();
 
   void signup() async {
     if (password.text.trim() == passwordcon.text.trim()) {
       try {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: emailidcont.text.trim(), password: passwordcon.text.trim());
+        addUserDet(namecon.text, agecon.text, emailidcont.text);
       } catch (e) {
         print(e);
       }
-    } else {}
+    } else {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              content: Text("Password Dosen/'t Match."),
+            );
+          });
+    }
+  }
+
+  Future addUserDet(String fullname, String age, String emailid) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'Fullname': fullname,
+      'Age': int.parse(age),
+      'Email_id': emailid,
+    });
   }
 
   @override
@@ -64,14 +87,14 @@ class Signup extends StatelessWidget {
                 height: 25,
               ),
               Loginfield(
-                  controler: name_con,
+                  controler: namecon,
                   hintText: "Full Name",
                   obsecureText: false),
               const SizedBox(
                 height: 10,
               ),
               Loginfield(
-                  controler: age_con, hintText: "Age", obsecureText: false),
+                  controler: agecon, hintText: "Age", obsecureText: false),
               const SizedBox(
                 height: 10,
               ),
