@@ -25,14 +25,14 @@ class Login extends StatelessWidget {
           child: Center(
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.end,
+              // crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 const SizedBox(
                   height: 25,
                 ),
                 const Icon(
                   Icons.book_outlined,
-                  size: 100,
+                  size: 150,
                   color: Color(0xff1e1e1e),
                 ),
                 const SizedBox(
@@ -93,7 +93,7 @@ class Login extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 50.0,
+                  height: 30.0,
                 ),
                 GestureDetector(
                   onTap: signin,
