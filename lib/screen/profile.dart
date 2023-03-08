@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
@@ -9,7 +10,7 @@ class Profile extends StatelessWidget {
     return Scaffold(
       // backgroundColor: Colors.deepPurple[300],
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
             padding:

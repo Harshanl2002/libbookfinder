@@ -40,11 +40,18 @@ class _SignupState extends State<Signup> {
   final namecon = TextEditingController();
 
   void signup() async {
+    String docid = "";
     if (password.text.trim() == passwordcon.text.trim()) {
       try {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: emailidcont.text.trim(), password: passwordcon.text.trim());
-        addUserDet(namecon.text, agecon.text, emailidcont.text);
+        docid += FirebaseAuth.instance.currentUser!.uid;
+        addUserDet(
+          namecon.text,
+          agecon.text,
+          emailidcont.text,
+          docid,
+        );
       } catch (e) {
         print(e);
       }
@@ -59,8 +66,9 @@ class _SignupState extends State<Signup> {
     }
   }
 
-  Future addUserDet(String fullname, String age, String emailid) async {
-    await FirebaseFirestore.instance.collection('users').add({
+  Future addUserDet(
+      String fullname, String age, String emailid, String uuid) async {
+    await FirebaseFirestore.instance.collection('users').doc(uuid).set({
       'Fullname': fullname,
       'Age': int.parse(age),
       'Email_id': emailid,
@@ -124,7 +132,7 @@ class _SignupState extends State<Signup> {
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(50.0, 16.0, 50.0, 16.0),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFc05e6e),
+                    color: const Color(0xff3584e4),
                     borderRadius: BorderRadius.circular(4.0),
                   ),
                   child: const Text(
@@ -156,7 +164,7 @@ class _SignupState extends State<Signup> {
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w900,
-                                color: Color(0xFFc05e6e),
+                                color: Color(0xff3584e4),
                               ))
                         ]),
                   )),
